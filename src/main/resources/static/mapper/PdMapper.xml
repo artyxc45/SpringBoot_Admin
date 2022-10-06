@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.project.mapper.FPdBoardMapper">
+
+	<insert id="fileInsert" parameterType="com.springboot.project.model.FileVO" useGeneratedKeys="true">
+INSERT INTO pd_image(FNO,PD_CODE,FILENAME,FILEORINAME,UPLOADPATH,FILEFULLNAME) VALUES (PDFNO_SEQ.NEXTVAL,#{pd_code},#{fileName},#{fileOriName},#{uploadPath},#{FileFullName})
+	</insert>
+	
+ 	<insert id="fileDelete" parameterType="com.springboot.project.model.FileVO" useGeneratedKeys="true">
+delete from pd_image where FNO = #{fno, jdbcType=NUMERIC}
+	</insert>
+	
+	<select id="getfileBoard" resultType="com.springboot.project.model.FileVO">
+select * from pd_image where FNO = #{fno, jdbcType=NUMERIC}
+	</select>
+</mapper>
